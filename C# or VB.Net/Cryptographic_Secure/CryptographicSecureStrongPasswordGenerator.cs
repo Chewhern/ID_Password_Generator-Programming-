@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Sodium;
 
-namespace PriSecWallet
+namespace SecureRandomByteArrayDataGenerator
 {
     public class CryptographicSecureStrongPasswordGenerator
     {
@@ -16,12 +16,14 @@ namespace PriSecWallet
             Byte[] CryptographicSecureData = new Byte[240];
             RNGCryptoServiceProvider rngCsp = new RNGCryptoServiceProvider();
             rngCsp.GetBytes(CryptographicSecureData);
+            //If you don't use sodium library, you can proceed by deleting all lines from 20-23
             Byte[] HashedBytes = GenericHash.Hash(CryptographicSecureData, null, 64);
             HashedBytes = GenericHash.Hash(HashedBytes, null, 64);
             HashedBytes = GenericHash.Hash(HashedBytes, null, 64);
             HashedBytes = GenericHash.Hash(HashedBytes, null, 64);
             int Loop = 0;
             StringBuilder stringBuilder = new StringBuilder();
+            //All possible HashedBytes needs to be replaced by CryptographicSecureData variable from line 27 to line 56
             while (Loop < HashedBytes.Length) 
             {
                 if (HashedBytes[Loop] >= 33 && HashedBytes[Loop] <= 47 && HashedBytes[Loop] != 34 && HashedBytes[Loop] != 39 && HashedBytes[Loop] != 45)
