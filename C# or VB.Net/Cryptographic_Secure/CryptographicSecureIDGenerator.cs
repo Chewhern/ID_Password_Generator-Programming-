@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Sodium;
 
-namespace PriSecWallet
+namespace SecureRandomByteArrayDataGenerator
 {
     public class CryptographicSecureIDGenerator
     {
